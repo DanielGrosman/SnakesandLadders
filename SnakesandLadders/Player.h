@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSDictionary *gameLogic;
 @property (nonatomic, strong) NSString *output;
 @property (nonatomic, assign) BOOL gameOver;
+@property (nonatomic, strong) NSString *playerName;
 
 - (void) rollDice;
 
