@@ -38,7 +38,7 @@ int main(int argc, const char * argv[]) {
             }
         }
                while (YES) {
-        NSLog(@"Please type 'roll' or 'r'");
+            NSLog(@"Please type 'roll' or 'r'");
             char newTurn[20];
             fgets (newTurn, 120, stdin);
             NSString *userAction = [[NSString alloc] initWithUTF8String:newTurn];

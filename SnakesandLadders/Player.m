@@ -22,31 +22,28 @@
 }
 
 - (void) rollDice {
+    
     int diceValue = arc4random_uniform(6)+1;
     NSLog(@"%@ rolled a %d", self.playerName, diceValue);
-    
+
     self.currentSquare += diceValue;
-    
+
     NSLog(@"%@ landed on square %ld", self.playerName,self.currentSquare);
-    
-    // converts the current score to an integer
+
     NSNumber *convertedCurrentSquare = [NSNumber numberWithInteger:self.currentSquare];
-    
 
     if ([self.gameLogic objectForKey:convertedCurrentSquare]) {
         NSInteger newCurrentSquare = [self.gameLogic[convertedCurrentSquare] integerValue];
         self.currentSquare = newCurrentSquare;
-    }
-    // if the current square is less than the new square (which is the associated value from the dictionary),
-    if ([convertedCurrentSquare integerValue] < self.currentSquare) {
+        
+    if([convertedCurrentSquare integerValue] < [self.gameLogic[convertedCurrentSquare] integerValue]) {
         self.output = [NSString stringWithFormat:@"Stairway to Heaven! %@ jumped from square %@ to square %ld",self.playerName,convertedCurrentSquare, self.currentSquare];
     }
-
-    else  {
+    else {
         self.output = [NSString stringWithFormat:@"%@ stepped on a snake and fell from square %@ to square %ld", self.playerName, convertedCurrentSquare, self.currentSquare];
     }
-    
-    
+
+}
 }
 
 
