@@ -35,16 +35,19 @@
     if ([self.gameLogic objectForKey:convertedCurrentSquare]) {
         NSInteger newCurrentSquare = [self.gameLogic[convertedCurrentSquare] integerValue];
         self.currentSquare = newCurrentSquare;
-        
+    
+    
     if([convertedCurrentSquare integerValue] < [self.gameLogic[convertedCurrentSquare] integerValue]) {
         self.output = [NSString stringWithFormat:@"Stairway to Heaven! %@ jumped from square %@ to square %ld",self.playerName,convertedCurrentSquare, self.currentSquare];
     }
-    else {
+    else if ([convertedCurrentSquare integerValue] > [self.gameLogic[convertedCurrentSquare] integerValue]){
         self.output = [NSString stringWithFormat:@"%@ stepped on a snake and fell from square %@ to square %ld", self.playerName, convertedCurrentSquare, self.currentSquare];
     }
 
 }
+    else self.output = @"";
 }
+
 
 
 @end
